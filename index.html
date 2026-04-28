@@ -5,18 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>O Mega Dogão</title>
     
-    <!-- Google Fonts -->
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap'>
-    
-    <!-- Oxygen Framework (local) -->
     <link rel='stylesheet' href='public/css/oxygen.css' media='all' />
-    
-    <!-- Oxygen Page CSS (local) -->
     <link rel='stylesheet' href='public/css/15.css' media='all' />
     <link rel='stylesheet' href='public/css/30.css' media='all' />
     <link rel='stylesheet' href='public/css/universal.css' media='all' />
     
-    <!-- TEMA MODERNO: VERMELHO + AMARELO -->
     <style>
         :root {
             --vermelho: #E63946;
@@ -24,31 +18,61 @@
             --amarelo: #F4A261;
             --amarelo-claro: #FED9A3;
             --gradiente: linear-gradient(135deg, var(--vermelho) 0%, var(--amarelo) 100%);
+            --sombra-suave: 0 2px 15px rgba(0,0,0,0.08);
+            --sombra-media: 0 8px 30px rgba(0,0,0,0.12);
+            --sombra-forte: 0 15px 50px rgba(0,0,0,0.18);
+            --borda-raio: 16px;
         }
         
-        /* === MODERNIZAÇÃO: Menu Sticky Moderno === */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* === HEADER MODERNO E INTUITIVO === */
         .oxy-header-wrapper {
             position: sticky !important;
             top: 0;
             z-index: 9999;
             background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
-            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--sombra-suave) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .oxy-header-wrapper.scrolled {
+            box-shadow: var(--sombra-media) !important;
         }
         
         .oxy-header-container {
             max-width: 1400px !important;
             padding: 0.75rem 2rem !important;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
-        /* Logo */
-        #image-13-225 { height: 3.5rem !important; transition: transform 0.3s; }
-        #image-13-225:hover { transform: scale(1.05); }
+        /* Logo com animação */
+        #image-13-225 { 
+            height: 3.5rem !important; 
+            transition: transform 0.3s ease;
+        }
         
-        /* Menu Links Modernos */
+        #image-13-225:hover { 
+            transform: scale(1.08) rotate(-2deg);
+        }
+        
+        /* Menu Desktop Moderno */
         .oxy-nav-menu-list {
+            display: flex !important;
             gap: 2.5rem !important;
+            list-style: none;
+            align-items: center;
         }
         
         .oxy-nav-menu-list li a {
@@ -56,15 +80,16 @@
             font-weight: 500 !important;
             font-size: 0.95rem !important;
             color: #374151 !important;
+            text-decoration: none;
             position: relative;
             padding: 0.5rem 0 !important;
             transition: color 0.3s ease !important;
         }
         
-        .oxy-nav-menu-list li a::after {
+        .oxy-nav-menu-list li a::before {
             content: '';
             position: absolute;
-            bottom: 0;
+            top: -2px;
             left: 0;
             width: 0;
             height: 2px;
@@ -72,7 +97,20 @@
             transition: width 0.3s ease;
         }
         
+        .oxy-nav-menu-list li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradiente);
+            transition: width 0.3s ease;
+        }
+        
+        .oxy-nav-menu-list li a:hover::before,
         .oxy-nav-menu-list li a:hover::after,
+        .oxy-nav-menu-list li.current-menu-item a::before,
         .oxy-nav-menu-list li.current-menu-item a::after {
             width: 100%;
         }
@@ -95,38 +133,41 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3) !important;
-            transition: all 0.3s ease !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .atomic-medium-button:hover {
-            transform: translateY(-2px) !important;
+            transform: translateY(-3px) scale(1.02) !important;
             box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4) !important;
         }
         
-        /* === HERO IMAGE MODERNA === */
+        /* === HERO IMAGE COM PARALAX SUAVE === */
         #section-75-30 .ct-section-inner-wrap {
             padding: 0 !important;
             max-width: 100% !important;
+            overflow: hidden;
         }
         
         #image-83-30 {
             width: 100% !important;
             height: auto !important;
-            filter: brightness(1.05) contrast(1.05);
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         #section-75-30:hover #image-83-30 {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
         
-        /* === TEXTOS MODERNOS === */
+        /* === TEXTOS COM TIPOGRAFIA MODERNA === */
         #text_block-108-30 {
             font-family: 'Poppins', sans-serif !important;
             font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
             font-weight: 700 !important;
             color: #1F2937 !important;
             line-height: 1.4 !important;
+            margin-bottom: 1rem !important;
         }
         
         #text_block-109-30 {
@@ -146,20 +187,10 @@
             -webkit-text-fill-color: transparent !important;
             background-clip: text !important;
             margin-bottom: 1.5rem !important;
+            display: inline-block;
         }
         
-        /* === IMAGENS COM HOVER MODERNO === */
-        .ct-image {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            border-radius: 12px !important;
-        }
-        
-        a:hover .ct-image {
-            transform: translateY(-8px) scale(1.02) !important;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
-        }
-        
-        /* === LAYOUT DAS 3 COLUNAS === */
+        /* === CARDS DAS 3 COLUNAS === */
         #new_columns-86-30 {
             display: grid !important;
             grid-template-columns: repeat(3, 1fr) !important;
@@ -170,30 +201,54 @@
         .ct-div-block {
             background: white;
             padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            border-radius: var(--borda-raio);
+            box-shadow: var(--sombra-suave);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ct-div-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradiente);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .ct-div-block:hover::before {
+            transform: scaleX(1);
         }
         
         .ct-div-block:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateY(-4px);
+            box-shadow: var(--sombra-forte);
+            transform: translateY(-8px);
         }
         
-        /* Textos dentro das colunas */
-        #text_block-97-30, #text_block-98-30 {
-            font-family: 'Poppins', sans-serif !important;
+        .ct-image {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            border-radius: 12px !important;
+        }
+        
+        a:hover .ct-image {
+            transform: scale(1.05) !important;
         }
         
         #text_block-97-30 {
             font-weight: 600 !important;
             color: #1F2937 !important;
             margin-top: 1rem !important;
+            font-family: 'Poppins', sans-serif !important;
         }
         
         #text_block-98-30 {
             color: #6B7280 !important;
             font-size: 0.95rem !important;
+            font-family: 'Poppins', sans-serif !important;
         }
         
         /* === FOOTER MODERNO === */
@@ -215,7 +270,10 @@
             opacity: 0.5;
         }
         
-        #image-54-225 { height: 4rem !important; }
+        #image-54-225 { 
+            height: 4rem !important; 
+            filter: brightness(0) invert(1);
+        }
         
         #text_block-66-15 {
             font-family: 'Poppins', sans-serif !important;
@@ -226,11 +284,14 @@
         #menu-prinicpal-1 .menu-item a {
             font-family: 'Poppins', sans-serif !important;
             color: white !important;
+            text-decoration: none;
             transition: opacity 0.3s !important;
+            display: block;
+            padding: 0.5rem 0 !important;
         }
         
         #menu-prinicpal-1 .menu-item a:hover {
-            opacity: 0.8;
+            opacity: 0.7;
         }
         
         .copyright {
@@ -239,7 +300,7 @@
             font-family: 'Poppins', sans-serif;
             font-size: 0.9rem;
             border-top: 1px solid rgba(255,255,255,0.2);
-            margin-top: 2rem !important;
+            margin-top: 3rem !important;
             padding-top: 2rem !important;
         }
         
@@ -250,8 +311,8 @@
             right: 2rem;
             background: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -264,13 +325,13 @@
         }
         
         .whatsapp-float:hover {
-            transform: scale(1.1) translateY(-4px);
+            transform: scale(1.15) translateY(-8px);
             box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
         }
         
         .whatsapp-float svg {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             fill: white;
         }
         
@@ -279,7 +340,29 @@
             50% { box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6); }
         }
         
-        /* === RESPONSIVO MOBILE === */
+        /* === MENU MOBILE OTIMIZADO === */
+        .oxy-menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        
+        .oxy-menu-toggle:hover {
+            background: rgba(230, 57, 70, 0.1);
+        }
+        
+        .oxy-nav-menu-hamburger-line {
+            background: var(--vermelho) !important;
+            height: 3px !important;
+            width: 25px !important;
+            margin: 4px 0 !important;
+            border-radius: 2px !important;
+            transition: all 0.3s ease;
+        }
+        
+        /* === RESPONSIVO MOBILE INTUITIVO === */
         @media (max-width: 768px) {
             .oxy-header-container {
                 padding: 0.5rem 1rem !important;
@@ -295,6 +378,31 @@
                 display: flex !important;
             }
             
+            /* Menu Mobile Moderno */
+            .oxy-nav-menu-open {
+                background: rgba(255, 255, 255, 0.98) !important;
+                backdrop-filter: blur(20px);
+            }
+            
+            .oxy-nav-menu-open .oxy-nav-menu-list {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center;
+                gap: 1.5rem !important;
+                padding: 2rem !important;
+            }
+            
+            .oxy-nav-menu-open .oxy-nav-menu-list li a {
+                font-size: 1.2rem !important;
+                padding: 0.75rem 1.5rem !important;
+                border-radius: 12px;
+                transition: all 0.3s;
+            }
+            
+            .oxy-nav-menu-open .oxy-nav-menu-list li a:hover {
+                background: rgba(230, 57, 70, 0.1);
+            }
+            
             #new_columns-86-30 {
                 grid-template-columns: 1fr !important;
                 gap: 1.5rem !important;
@@ -302,7 +410,7 @@
             }
             
             .ct-div-block {
-                padding: 1.5rem !important;
+                padding: 1.5rem;
             }
             
             #section-58-15.ct-section {
@@ -310,19 +418,19 @@
             }
             
             .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 1rem;
-                right: 1rem;
+                width: 56px;
+                height: 56px;
+                bottom: 1.5rem;
+                right: 1.5rem;
             }
             
             .whatsapp-float svg {
-                width: 24px;
-                height: 24px;
+                width: 28px;
+                height: 28px;
             }
             
             .atomic-medium-button {
-                padding: 0.5rem 1.25rem !important;
+                padding: 0.6rem 1.25rem !important;
                 font-size: 0.8rem !important;
             }
         }
@@ -339,12 +447,53 @@
             .ct-headline {
                 font-size: 1.5rem !important;
             }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        
+        /* === ANIMAÇÕES DE ENTRADA === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .ct-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* === MELHORIAS DE TOQUE EM MOBILE === */
+        @media (hover: none) {
+            .ct-div-block:active {
+                transform: scale(0.98);
+            }
+            
+            .atomic-medium-button:active {
+                transform: scale(0.95) !important;
+            }
+            
+            .whatsapp-float:active {
+                transform: scale(0.9);
+            }
         }
     </style>
 </head>
 <body class="home wp-singular page-template-default page page-id-30 wp-embed-responsive wp-theme-oxygen-is-not-a-theme oxygen-body">
 
-    <!-- HEADER MODERNO -->
+    <!-- HEADER -->
     <header id="_header-2-225" class="oxy-header-wrapper oxy-overlay-header oxy-header">
         <div id="_header_row-10-225" class="oxy-header-row">
             <div class="oxy-header-container">
@@ -354,15 +503,15 @@
                     </a>
                 </div>
                 <div id="_header_center-14-225" class="oxy-header-center"></div>
-                <div id="_header_right-15-225" class="oxy-header-right">
-                    <div id="div_block-16-225" class="ct-div-block">
+                <div id="_header_right-15-225" class="oxy-header-right" style="display: flex; align-items: center; gap: 2rem;">
+                    <div id="div_block-16-225" class="ct-div-block" style="background: transparent !important; box-shadow: none !important; padding: 0 !important;">
                         <nav id="_nav_menu-64-15" class="oxy-nav-menu oxy-nav-menu-dropdowns oxy-nav-menu-dropdown-arrow">
                             <div class='oxy-menu-toggle'>
                                 <div class='oxy-nav-menu-hamburger-wrap'>
                                     <div class='oxy-nav-menu-hamburger'>
-                                        <div class='oxy-nav-menu-hamburger-line' style="background: var(--vermelho);"></div>
-                                        <div class='oxy-nav-menu-hamburger-line' style="background: var(--vermelho);"></div>
-                                        <div class='oxy-nav-menu-hamburger-line' style="background: var(--vermelho);"></div>
+                                        <div class='oxy-nav-menu-hamburger-line'></div>
+                                        <div class='oxy-nav-menu-hamburger-line'></div>
+                                        <div class='oxy-nav-menu-hamburger-line'></div>
                                     </div>
                                 </div>
                             </div>
@@ -408,7 +557,7 @@
         <!-- DESCRIÇÃO -->
         <section id="section-106-30" class="ct-section" style="padding: 3rem 2rem;">
             <div class="ct-section-inner-wrap">
-                <div id="div_block-110-30" class="ct-div-block">
+                <div id="div_block-110-30" class="ct-div-block" style="background: transparent !important; box-shadow: none !important; padding: 0 !important;">
                     <div id="text_block-108-30" class="ct-text-block">
                         A maior variedade de cachorro-quente e lanches do Centenário!
                     </div>
@@ -420,7 +569,7 @@
         </section>
 
         <!-- 3 COLUNAS -->
-        <section id="section-85-30" class="ct-section" style="padding: 2rem;">
+        <section id="section-85-30" class="ct-section">
             <div class="ct-section-inner-wrap">
                 <div id="new_columns-86-30" class="ct-new-columns">
                     <div id="div_block-87-30" class="ct-div-block">
@@ -495,21 +644,31 @@
         </svg>
     </a>
 
-    <!-- SCRIPTS -->
     <script src="https://omegadogao.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
     <script type="text/javascript">
+        // Menu Mobile
         jQuery(document).ready(function() {
             jQuery('body').on('click', '.oxy-menu-toggle', function() {
                 jQuery(this).parent('.oxy-nav-menu').toggleClass('oxy-nav-menu-open');
                 jQuery('body').toggleClass('oxy-nav-menu-prevent-overflow');
                 jQuery('html').toggleClass('oxy-nav-menu-prevent-overflow');
             });
+            
             var selector = '.oxy-nav-menu-open .menu-item a[href*="#"]';
             jQuery('body').on('click', selector, function(){
                 jQuery('.oxy-nav-menu-open').removeClass('oxy-nav-menu-open');
                 jQuery('body').removeClass('oxy-nav-menu-prevent-overflow');
                 jQuery('html').removeClass('oxy-nav-menu-prevent-overflow');
                 jQuery(this).click();
+            });
+            
+            // Efeito de scroll no header
+            jQuery(window).scroll(function() {
+                if (jQuery(this).scrollTop() > 50) {
+                    jQuery('.oxy-header-wrapper').addClass('scrolled');
+                } else {
+                    jQuery('.oxy-header-wrapper').removeClass('scrolled');
+                }
             });
         });
     </script>

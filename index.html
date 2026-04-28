@@ -1,14 +1,233 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="O Mega Dogão - A maior variedade de cachorro-quente e lanches do Centenário!" />
-    <title>Mega Dogão - O melhor cachorro-quente de Curitiba</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Mega Dogão</title>
+    <style>
+        /* Cores do tema: Vermelho e Amarelo */
+        :root {
+            --theme-red: #DC2626;
+            --theme-red-dark: #B91C1C;
+            --theme-yellow: #FBBF24;
+            --theme-yellow-dark: #F59E0B;
+        }
+        /* Reset de cores para o tema */
+        .oxy-nav-menu-list a { color: #374151; transition: color 0.3s; }
+        .oxy-nav-menu-list a:hover, .oxy-nav-menu-list .current-menu-item a { color: var(--theme-red) !important; }
+        .ct-link-text.atomic-medium-button, .btn-red {
+            background: linear-gradient(135deg, var(--theme-red) 0%, var(--theme-red-dark) 100%) !important;
+            color: white !important;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+            transition: all 0.3s ease;
+        }
+        .ct-link-text.atomic-medium-button:hover, .btn-red:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.6);
+        }
+        .ct-headline, h1 { color: var(--theme-red) !important; }
+        .gradient-bg { background: linear-gradient(135deg, var(--theme-red) 0%, var(--theme-yellow) 100%) !important; }
+        .text-gradient {
+            background: linear-gradient(135deg, var(--theme-red) 0%, var(--theme-yellow-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Manter layout original */
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
+        .oxy-header-wrapper { position: sticky; top: 0; z-index: 50; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .ct-section { width: 100%; }
+        .ct-section-inner-wrap { max-width: 1400px; margin: 0 auto; }
+        .ct-image { max-width: 100%; height: auto; }
+        .oxy-nav-menu-list { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; }
+        .oxy-nav-menu-list li a { text-decoration: none; font-weight: 500; }
+        .ct-div-block { text-align: center; }
+        .ct-text-block { text-align: center; padding: 1rem; }
+        /* WhatsApp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: #25D366;
+            color: white;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        /* Mobile menu */
+        .mobile-menu { display: none; }
+        @media (max-width: 768px) {
+            .oxy-nav-menu-list { display: none; }
+            .mobile-menu { display: block; cursor: pointer; }
+            .mobile-menu-open .oxy-nav-menu-list { display: flex; flex-direction: column; padding: 1rem; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="oxygen-body">
+
+    <!-- Header idêntico ao original -->
+    <header id="_header-2-225" class="oxy-header-wrapper oxy-overlay-header oxy-header">
+        <div id="_header_row-10-225" class="oxy-header-row">
+            <div class="oxy-header-container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;">
+                <div id="_header_left-11-225" class="oxy-header-left">
+                    <a id="link-12-225" class="ct-link atomic-logo" href="#" target="_self">
+                        <img id="image-13-225" alt="Logo Mega Dogão" src="public/images/logo.png" class="ct-image" style="height: 3rem;">
+                    </a>
+                </div>
+                <div id="_header_center-14-225" class="oxy-header-center"></div>
+                <div id="_header_right-15-225" class="oxy-header-right" style="display: flex; align-items: center; gap: 2rem;">
+                    <nav id="_nav_menu-64-15" class="oxy-nav-menu oxy-nav-menu-dropdowns oxy-nav-menu-dropdown-arrow">
+                        <div class="oxy-menu-toggle mobile-menu">
+                            <div class="oxy-nav-menu-hamburger">
+                                <div class="oxy-nav-menu-hamburger-line"></div>
+                                <div class="oxy-nav-menu-hamburger-line"></div>
+                                <div class="oxy-nav-menu-hamburger-line"></div>
+                            </div>
+                        </div>
+                        <div class="menu-prinicpal-container">
+                            <ul id="menu-prinicpal" class="oxy-nav-menu-list">
+                                <li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-30 current_page_item menu-item-63">
+                                    <a href="#home" aria-current="page">Home</a>
+                                </li>
+                                <li id="menu-item-65" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65">
+                                    <a href="#cardapio">Cardápio</a>
+                                </li>
+                                <li id="menu-item-66" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66">
+                                    <a href="#contato">Contato</a>
+                                </li>
+                                <li id="menu-item-67" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-67">
+                                    <a href="#localizacao">Localização</a>
+                                </li>
+                                <li id="menu-item-64" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64">
+                                    <a href="#sobre">Sobre</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <a id="link_text-18-225" class="ct-link-text atomic-medium-button" href="https://api.whatsapp.com/send/?phone=554191833270" target="_blank">
+                        FAÇA SEU PEDIDO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (Slider) idêntico ao original -->
+    <section id="section-75-30" class="ct-section">
+        <div class="ct-section-inner-wrap">
+            <a id="link-113-30" class="ct-link" href="https://omegadogao.com.br/cardapio/" target="_blank">
+                <img id="image-83-30" alt="Slider Mega Dogão" src="public/images/slider.jpg" class="ct-image" style="width: 100%;">
+            </a>
+        </div>
+    </section>
+
+    <!-- Texto Descritivo -->
+    <section id="section-106-30" class="ct-section" style="padding: 3rem 2rem;">
+        <div class="ct-section-inner-wrap">
+            <div id="div_block-110-30" class="ct-div-block">
+                <div id="text_block-108-30" class="ct-text-block" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">
+                    A maior variedade de cachorro-quente e lanches do Centenário!
+                </div>
+                <div id="text_block-109-30" class="ct-text-block" style="font-size: 1.125rem; color: #4B5563;">
+                    Venha conhecer o mega dogão e experimente um dos 25 tipos de cachorro-quente prensado e tradicional e mais de 26 tipos de lanches
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Colunas: DICA / ONDE ESTAMOS / CONHEÇA -->
+    <section id="section-85-30" class="ct-section" style="padding: 3rem 2rem;">
+        <div class="ct-section-inner-wrap">
+            <div id="new_columns-86-30" class="ct-new-columns" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                <!-- DICA DE LANCHES -->
+                <div id="div_block-87-30" class="ct-div-block">
+                    <h1 id="headline-93-30" class="ct-headline" style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">DICA DE LANCHES</h1>
+                    <a id="link-111-30" class="ct-link" href="https://omegadogao.com.br/cardapio/" target="_blank">
+                        <img id="image-102-30" alt="Dica de Cardápio" src="public/images/dica-cardapio.png" class="ct-image" style="border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    </a>
+                </div>
+                <!-- ONDE ESTAMOS -->
+                <div id="div_block-88-30" class="ct-div-block">
+                    <h1 id="headline-90-30" class="ct-headline" style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">ONDE ESTAMOS...</h1>
+                    <a id="link-105-30" class="ct-link" href="https://maps.google.com/maps?ll=-25.46702,-49.209139&z=16&t=m&hl=en&gl=US&mapclient=embed&q=RUA.+Filipinas,+536+-+Cajuru,+Curitiba-+PR" target="_blank">
+                        <img id="image-104-30" alt="Mapa Localização" src="public/images/mapa.png" class="ct-image" style="border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    </a>
+                    <div id="text_block-97-30" class="ct-text-block" style="margin-top: 1rem; font-weight: 600;">Rua Filipinas, 536 - Cajuru - Curitiba</div>
+                    <div id="text_block-98-30" class="ct-text-block" style="color: #4B5563;">41 3092-4584 / 41-99183-3270</div>
+                </div>
+                <!-- CONHEÇA O MEGA DOGÃO -->
+                <div id="div_block-89-30" class="ct-div-block">
+                    <h1 id="headline-91-30" class="ct-headline" style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">CONHEÇA O MEGA DOGÃO</h1>
+                    <a id="link-112-30" class="ct-link" href="https://omegadogao.com.br/sobre/" target="_blank">
+                        <img id="image-101-30" alt="Conheça o Mega Dogão" src="public/images/highlight-car.jpg" class="ct-image" style="border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer idêntico ao original -->
+    <section id="section-58-15" class="ct-section gradient-bg" style="padding: 3rem 2rem; color: white;">
+        <div class="ct-section-inner-wrap">
+            <div id="new_columns-59-15" class="ct-new-columns" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                <div id="div_block-60-15" class="ct-div-block">
+                    <img id="image-54-225" alt="Logo" src="public/images/logo.png" class="ct-image" style="height: 3rem; margin-bottom: 1rem;">
+                    <div id="text_block-66-15" class="ct-text-block" style="color: rgba(255,255,255,0.9);">
+                        Nossa missão é de oferecer aos nossos clientes o melhor cachorro-quente, para isso, temos um cuidado especial na escolha dos produtos, dos fornecedores e do cuidado no preparo dos lanches.
+                    </div>
+                </div>
+                <div id="div_block-61-15" class="ct-div-block">
+                    <nav id="_nav_menu-63-15" class="oxy-nav-menu oxy-nav-menu-dropdowns oxy-nav-menu-dropdown-arrow">
+                        <div class="menu-prinicpal-container">
+                            <ul id="menu-prinicpal-1" class="oxy-nav-menu-list" style="flex-direction: column; gap: 0.5rem;">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-30 current_page_item menu-item-63">
+                                    <a href="#home" style="color: white;">Home</a>
+                                </li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65">
+                                    <a href="#cardapio" style="color: white;">Cardápio</a>
+                                </li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66">
+                                    <a href="#contato" style="color: white;">Contato</a>
+                                </li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-67">
+                                    <a href="#localizacao" style="color: white;">Localização</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64">
+                                    <a href="#sobre" style="color: white;">Sobre</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.3); margin-top: 2rem; padding-top: 2rem; text-align: center; color: rgba(255,255,255,0.8);">
+                &copy; 2026 Mega Dogão. Todos os direitos reservados.
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão WhatsApp Flutuante (Moderno) -->
+    <a href="https://api.whatsapp.com/send/?phone=554191833270" target="_blank" class="whatsapp-float">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 1.83c4.45 0 8.08 3.63 8.08 8.08s-3.63 8.08-8.08 8.08c-1.41 0-2.73-.37-3.88-1.03l-.28-.16-3.17.83.85-3.1-.18-.29c-.74-1.21-1.13-2.63-1.13-4.12 0-4.45 3.63-8.08 8.08-8.08z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.oxy-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.oxy-nav-menu').classList.toggle('oxy-nav-menu-open');
+        });
+    </script>
+</body>
 </html>

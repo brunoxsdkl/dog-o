@@ -2,89 +2,355 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>O Mega Dogão</title>
     
-    <!-- GOOGLE FONTS (mesmo do original) -->
-    <link rel='stylesheet' id='wp-fonts-local' href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'>
+    <!-- Google Fonts -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap'>
     
-    <!-- OXYGEN FRAMEWORK CSS (original) -->
-    <link rel='stylesheet' id='oxygen-css' href='https://omegadogao.com.br/wp-content/plugins/oxygen/component-framework/oxygen.css?ver=4.9.7' media='all' />
+    <!-- Oxygen Framework (local) -->
+    <link rel='stylesheet' href='public/css/oxygen.css' media='all' />
     
-    <!-- OXYGEN PAGE CSS (original) -->
-    <link rel='stylesheet' id='oxygen-cache-15-css' href='https://omegadogao.com.br/wp-content/uploads/oxygen/css/15.css?cache=1738692313&#038;ver=6.9.4' media='all' />
-    <link rel='stylesheet' id='oxygen-cache-30-css' href='https://omegadogao.com.br/wp-content/uploads/oxygen/css/30.css?cache=1738691142&#038;ver=6.9.4' media='all' />
-    <link rel='stylesheet' id='oxygen-universal-styles-css' href='https://omegadogao.com.br/wp-content/uploads/oxygen/css/universal.css?cache=1738692313&#038;ver=6.9.4' media='all' />
+    <!-- Oxygen Page CSS (local) -->
+    <link rel='stylesheet' href='public/css/15.css' media='all' />
+    <link rel='stylesheet' href='public/css/30.css' media='all' />
+    <link rel='stylesheet' href='public/css/universal.css' media='all' />
     
-    <!-- TEMA VERMELHO E AMARELO (sobrescreve cores originais) -->
+    <!-- TEMA MODERNO: VERMELHO + AMARELO -->
     <style>
         :root {
-            --vermelho: #DC2626;
-            --vermelho-escuro: #B91C1C;
-            --amarelo: #FBBF24;
-            --amarelo-escuro: #F59E0B;
+            --vermelho: #E63946;
+            --vermelho-escuro: #C1121F;
+            --amarelo: #F4A261;
+            --amarelo-claro: #FED9A3;
+            --gradiente: linear-gradient(135deg, var(--vermelho) 0%, var(--amarelo) 100%);
         }
         
-        /* Menu ativo */
-        .oxy-nav-menu-list li.current-menu-item > a,
-        .oxy-nav-menu-list li a:hover {
+        /* === MODERNIZAÇÃO: Menu Sticky Moderno === */
+        .oxy-header-wrapper {
+            position: sticky !important;
+            top: 0;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+            transition: all 0.3s ease;
+        }
+        
+        .oxy-header-container {
+            max-width: 1400px !important;
+            padding: 0.75rem 2rem !important;
+        }
+        
+        /* Logo */
+        #image-13-225 { height: 3.5rem !important; transition: transform 0.3s; }
+        #image-13-225:hover { transform: scale(1.05); }
+        
+        /* Menu Links Modernos */
+        .oxy-nav-menu-list {
+            gap: 2.5rem !important;
+        }
+        
+        .oxy-nav-menu-list li a {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.95rem !important;
+            color: #374151 !important;
+            position: relative;
+            padding: 0.5rem 0 !important;
+            transition: color 0.3s ease !important;
+        }
+        
+        .oxy-nav-menu-list li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradiente);
+            transition: width 0.3s ease;
+        }
+        
+        .oxy-nav-menu-list li a:hover::after,
+        .oxy-nav-menu-list li.current-menu-item a::after {
+            width: 100%;
+        }
+        
+        .oxy-nav-menu-list li a:hover,
+        .oxy-nav-menu-list li.current-menu-item a {
             color: var(--vermelho) !important;
-            border-color: var(--vermelho) !important;
         }
         
-        /* Botão FAÇA SEU PEDIDO */
-        .ct-link-text.atomic-medium-button {
-            background: linear-gradient(135deg, var(--vermelho) 0%, var(--vermelho-escuro) 100%) !important;
-            color: white !important;
+        /* Botão WhatsApp no Menu */
+        .atomic-medium-button {
+            background: var(--gradiente) !important;
             border: none !important;
+            color: white !important;
+            padding: 0.75rem 2rem !important;
+            border-radius: 50px !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3) !important;
+            transition: all 0.3s ease !important;
         }
         
-        /* Títulos */
+        .atomic-medium-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4) !important;
+        }
+        
+        /* === HERO IMAGE MODERNA === */
+        #section-75-30 .ct-section-inner-wrap {
+            padding: 0 !important;
+            max-width: 100% !important;
+        }
+        
+        #image-83-30 {
+            width: 100% !important;
+            height: auto !important;
+            filter: brightness(1.05) contrast(1.05);
+            transition: transform 0.5s ease;
+        }
+        
+        #section-75-30:hover #image-83-30 {
+            transform: scale(1.02);
+        }
+        
+        /* === TEXTOS MODERNOS === */
+        #text_block-108-30 {
+            font-family: 'Poppins', sans-serif !important;
+            font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
+            font-weight: 700 !important;
+            color: #1F2937 !important;
+            line-height: 1.4 !important;
+        }
+        
+        #text_block-109-30 {
+            font-family: 'Poppins', sans-serif !important;
+            font-size: clamp(1rem, 1.5vw, 1.25rem) !important;
+            color: #6B7280 !important;
+            line-height: 1.6 !important;
+        }
+        
+        /* === TÍTULOS DAS SEÇÕES === */
         .ct-headline {
-            color: var(--vermelho) !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+            background: var(--gradiente);
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            margin-bottom: 1.5rem !important;
         }
         
-        /* Footer gradiente vermelho-amarelo */
+        /* === IMAGENS COM HOVER MODERNO === */
+        .ct-image {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            border-radius: 12px !important;
+        }
+        
+        a:hover .ct-image {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+        }
+        
+        /* === LAYOUT DAS 3 COLUNAS === */
+        #new_columns-86-30 {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 2rem !important;
+            padding: 2rem !important;
+        }
+        
+        .ct-div-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .ct-div-block:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+        
+        /* Textos dentro das colunas */
+        #text_block-97-30, #text_block-98-30 {
+            font-family: 'Poppins', sans-serif !important;
+        }
+        
+        #text_block-97-30 {
+            font-weight: 600 !important;
+            color: #1F2937 !important;
+            margin-top: 1rem !important;
+        }
+        
+        #text_block-98-30 {
+            color: #6B7280 !important;
+            font-size: 0.95rem !important;
+        }
+        
+        /* === FOOTER MODERNO === */
         #section-58-15.ct-section {
-            background: linear-gradient(135deg, var(--vermelho) 0%, var(--amarelo) 100%) !important;
+            background: var(--gradiente) !important;
+            padding: 4rem 2rem !important;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Botão WhatsApp flutuante (moderno) */
+        #section-58-15::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        #image-54-225 { height: 4rem !important; }
+        
+        #text_block-66-15 {
+            font-family: 'Poppins', sans-serif !important;
+            color: rgba(255,255,255,0.9) !important;
+            line-height: 1.6 !important;
+        }
+        
+        #menu-prinicpal-1 .menu-item a {
+            font-family: 'Poppins', sans-serif !important;
+            color: white !important;
+            transition: opacity 0.3s !important;
+        }
+        
+        #menu-prinicpal-1 .menu-item a:hover {
+            opacity: 0.8;
+        }
+        
+        .copyright {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 2rem !important;
+            padding-top: 2rem !important;
+        }
+        
+        /* === BOTÃO WHATSAPP FLUTUANTE MODERNO === */
         .whatsapp-float {
             position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
+            bottom: 2rem;
+            right: 2rem;
             background: #25D366;
             color: white;
-            width: 4rem;
-            height: 4rem;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
-            z-index: 100;
-            transition: transform 0.3s;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 99999;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
+            animation: pulse 2s infinite;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        .whatsapp-float svg { width: 2rem; height: 2rem; fill: white; }
         
-        /* Ajustes gerais */
-        .ct-image { max-width: 100%; height: auto; }
-        .ct-section { width: 100%; }
-        .ct-section-inner-wrap { max-width: 1400px; margin: 0 auto; }
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+        }
+        
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6); }
+        }
+        
+        /* === RESPONSIVO MOBILE === */
+        @media (max-width: 768px) {
+            .oxy-header-container {
+                padding: 0.5rem 1rem !important;
+            }
+            
+            #image-13-225 { height: 2.5rem !important; }
+            
+            .oxy-nav-menu-list {
+                display: none !important;
+            }
+            
+            .oxy-menu-toggle {
+                display: flex !important;
+            }
+            
+            #new_columns-86-30 {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+                padding: 1rem !important;
+            }
+            
+            .ct-div-block {
+                padding: 1.5rem !important;
+            }
+            
+            #section-58-15.ct-section {
+                padding: 2rem 1rem !important;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .atomic-medium-button {
+                padding: 0.5rem 1.25rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #text_block-108-30 {
+                font-size: 1.25rem !important;
+            }
+            
+            #text_block-109-30 {
+                font-size: 0.9rem !important;
+            }
+            
+            .ct-headline {
+                font-size: 1.5rem !important;
+            }
+        }
     </style>
 </head>
 <body class="home wp-singular page-template-default page page-id-30 wp-embed-responsive wp-theme-oxygen-is-not-a-theme oxygen-body">
 
-    <!-- HEADER (idêntico ao original) -->
+    <!-- HEADER MODERNO -->
     <header id="_header-2-225" class="oxy-header-wrapper oxy-overlay-header oxy-header">
         <div id="_header_row-10-225" class="oxy-header-row">
             <div class="oxy-header-container">
                 <div id="_header_left-11-225" class="oxy-header-left">
                     <a id="link-12-225" class="ct-link atomic-logo" href="/" target="_self">
-                        <img id="image-13-225" alt="" src="public/images/logo.png" class="ct-image">
+                        <img id="image-13-225" alt="Mega Dogão" src="public/images/logo.png" class="ct-image">
                     </a>
                 </div>
                 <div id="_header_center-14-225" class="oxy-header-center"></div>
@@ -94,9 +360,9 @@
                             <div class='oxy-menu-toggle'>
                                 <div class='oxy-nav-menu-hamburger-wrap'>
                                     <div class='oxy-nav-menu-hamburger'>
-                                        <div class='oxy-nav-menu-hamburger-line'></div>
-                                        <div class='oxy-nav-menu-hamburger-line'></div>
-                                        <div class='oxy-nav-menu-hamburger-line'></div>
+                                        <div class='oxy-nav-menu-hamburger-line' style="background: var(--vermelho);"></div>
+                                        <div class='oxy-nav-menu-hamburger-line' style="background: var(--vermelho);"></div>
+                                        <div class='oxy-nav-menu-hamburger-line' style="background: var(--vermelho);"></div>
                                     </div>
                                 </div>
                             </div>
@@ -130,17 +396,17 @@
     </header>
 
     <div id='inner_content-3-228' class='ct-inner-content'>
-        <!-- HERO SLIDER -->
+        <!-- HERO -->
         <section id="section-75-30" class="ct-section">
             <div class="ct-section-inner-wrap">
                 <a id="link-113-30" class="ct-link" href="https://omegadogao.com.br/cardapio/" target="_blank">
-                    <img id="image-83-30" alt="" src="public/images/slider.jpg" class="ct-image" style="width: 100%; display: block;">
+                    <img id="image-83-30" alt="Mega Dogão" src="public/images/slider.jpg" class="ct-image">
                 </a>
             </div>
         </section>
 
         <!-- DESCRIÇÃO -->
-        <section id="section-106-30" class="ct-section">
+        <section id="section-106-30" class="ct-section" style="padding: 3rem 2rem;">
             <div class="ct-section-inner-wrap">
                 <div id="div_block-110-30" class="ct-div-block">
                     <div id="text_block-108-30" class="ct-text-block">
@@ -154,27 +420,27 @@
         </section>
 
         <!-- 3 COLUNAS -->
-        <section id="section-85-30" class="ct-section">
+        <section id="section-85-30" class="ct-section" style="padding: 2rem;">
             <div class="ct-section-inner-wrap">
                 <div id="new_columns-86-30" class="ct-new-columns">
                     <div id="div_block-87-30" class="ct-div-block">
                         <h1 id="headline-93-30" class="ct-headline">DICA DE LANCHES</h1>
                         <a id="link-111-30" class="ct-link" href="https://omegadogao.com.br/cardapio/" target="_blank">
-                            <img id="image-102-30" alt="" src="public/images/dica-cardapio.png" class="ct-image">
+                            <img id="image-102-30" alt="Dica Cardápio" src="public/images/dica-cardapio.png" class="ct-image">
                         </a>
                     </div>
                     <div id="div_block-88-30" class="ct-div-block">
                         <h1 id="headline-90-30" class="ct-headline">ONDE ESTAMOS...</h1>
                         <a id="link-105-30" class="ct-link" href="https://maps.google.com/maps?ll=-25.46702,-49.209139&z=16&t=m&hl=en&gl=US&mapclient=embed&q=RUA.+Filipinas,+536+-+Cajuru,+Curitiba-+PR" target="_blank">
-                            <img id="image-104-30" alt="" src="public/images/mapa.png" class="ct-image">
+                            <img id="image-104-30" alt="Mapa" src="public/images/mapa.png" class="ct-image">
                         </a>
                         <div id="text_block-97-30" class="ct-text-block">Rua Filipinas, 536 - Cajuru - Curitiba</div>
                         <div id="text_block-98-30" class="ct-text-block">41 3092-4584 / 41-99183-3270&nbsp;</div>
                     </div>
                     <div id="div_block-89-30" class="ct-div-block">
-                        <h1 id="headline-91-30" class="ct-headline">Conheça O Mega Dogão</h1>
+                        <h1 id="headline-91-30" class="ct-headline">CONHEÇA O MEGA DOGÃO</h1>
                         <a id="link-112-30" class="ct-link" href="https://omegadogao.com.br/sobre/" target="_blank">
-                            <img id="image-101-30" alt="" src="public/images/highlight-car.jpg" class="ct-image">
+                            <img id="image-101-30" alt="Conheça" src="public/images/highlight-car.jpg" class="ct-image">
                         </a>
                     </div>
                 </div>
@@ -182,22 +448,22 @@
         </section>
     </div>
 
-    <!-- FOOTER (idêntico ao original) -->
+    <!-- FOOTER -->
     <section id="section-58-15" class="ct-section">
         <div class="ct-section-inner-wrap">
-            <div id="new_columns-59-15" class="ct-new-columns">
-                <div id="div_block-60-15" class="ct-div-block">
-                    <img id="image-54-225" alt="" src="public/images/logo.png" class="ct-image">
+            <div id="new_columns-59-15" class="ct-new-columns" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem;">
+                <div id="div_block-60-15" class="ct-div-block" style="background: transparent !important; box-shadow: none !important; padding: 0 !important;">
+                    <img id="image-54-225" alt="Logo" src="public/images/logo.png" class="ct-image">
                     <div id="text_block-66-15" class="ct-text-block">
-                        Nossa missão é de oferecer aos nosso clientes o melhor cachorro-quente, para isso, temos um cuidado especial na&nbsp; escolha dos produtos, dos fornecedores e do cuidado no preparo dos lanches.
+                        Nossa missão é de oferecer aos nossos clientes o melhor cachorro-quente, para isso, temos um cuidado especial na escolha dos produtos, dos fornecedores e do cuidado no preparo dos lanches.
                     </div>
                 </div>
-                <div id="div_block-61-15" class="ct-div-block">
+                <div id="div_block-61-15" class="ct-div-block" style="background: transparent !important; box-shadow: none !important; padding: 0 !important;">
                     <nav id="_nav_menu-63-15" class="oxy-nav-menu oxy-nav-menu-dropdowns oxy-nav-menu-dropdown-arrow">
                         <div class="menu-prinicpal-container">
-                            <ul id="menu-prinicpal-1" class="oxy-nav-menu-list">
+                            <ul id="menu-prinicpal-1" class="oxy-nav-menu-list" style="flex-direction: column; gap: 0.75rem;">
                                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-30 current_page_item menu-item-63">
-                                    <a href="#home" aria-current="page">Home</a>
+                                    <a href="#home">Home</a>
                                 </li>
                                 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-65">
                                     <a href="/cardapio">Cardápio</a>
@@ -216,17 +482,21 @@
                     </nav>
                 </div>
             </div>
+            <div class="copyright">
+                &copy; 2026 Mega Dogão. Todos os direitos reservados.
+            </div>
         </div>
     </section>
 
-    <!-- WHATSAPP FLUTUANTE (moderno) -->
+    <!-- WHATSAPP FLUTUANTE -->
     <a href="https://api.whatsapp.com/send/?phone=554191833270" target="_blank" class="whatsapp-float">
         <svg viewBox="0 0 24 24">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 1.83c4.45 0 8.08 3.63 8.08 8.08s-3.63 8.08-8.08 8.08c-1.41 0-2.73-.37-3.88-1.03l-.28-.16-3.17.83.85-3.1-.18-.29c-.74-1.21-1.13-2.63-1.13-4.12 0-4.45 3.63-8.08 8.08-8.08z"/>
         </svg>
     </a>
 
-    <!-- SCRIPTS (originais) -->
+    <!-- SCRIPTS -->
+    <script src="https://omegadogao.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery('body').on('click', '.oxy-menu-toggle', function() {
@@ -243,7 +513,5 @@
             });
         });
     </script>
-    <script src="https://omegadogao.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
-
 </body>
 </html>
